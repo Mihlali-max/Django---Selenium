@@ -168,11 +168,12 @@ def updateOrder(request, pk):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
-def deleteOrder(request, pk):
+def deleteOrder (request, pk):
 	order = Order.objects.get(id=pk)
 	if request.method == "POST":
 		order.delete()
 		return redirect('/')
 
-	context = {'item':order}
+	context = {'item': order}
 	return render(request, 'accounts/delete.html', context)
+
